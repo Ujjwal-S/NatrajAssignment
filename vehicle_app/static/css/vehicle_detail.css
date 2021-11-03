@@ -1,0 +1,168 @@
+.upper_portion{
+    /* background-color: aquamarine; */
+
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 90%;
+    margin: 20px auto;
+}
+.upper_portion .set_1, .upper_portion .set_2{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.upper_portion a{
+    margin-right: 20px;
+}
+#delBtn{
+    margin-right: 20px;
+}
+.upper_portion button{
+    border: none;
+    outline: none;
+    cursor: pointer;
+    padding: 10px 15px;
+    font-size: 18px;
+    font-weight: 500;
+    margin-right: 20px;
+    border-radius: 10px;
+}
+.upper_portion button:last-child{
+    margin-right: 0px;
+}
+.upper_portion .circle-button{
+    border-radius: 50%;
+    transition: .3s all;
+}
+.upper_portion .edit.circle-button:hover{
+    background-color: #0d6efd;
+    color: #fff;
+}
+.upper_portion .del.circle-button:hover{
+    background-color:#dc3545;
+    color: #fff;
+}
+
+.upper_portion .set_1 .cam1, .upper_portion .set_1 .cam2{
+    background-color: #ecb100;
+}
+.upper_portion .set_2 .off{
+    border: 2px solid #d00;
+    background-color: transparent;
+    letter-spacing: 1px;
+    color: #f84456;
+    transition: .4s all;
+}
+.upper_portion .set_2 .off:hover{
+    background-color: #d00;
+    color: #fff;
+}
+.upper_portion .set_2 .on{
+    border: 2px solid #008a00;
+    background-color: transparent;;
+    letter-spacing: 1px;
+    color: #45c589;
+    transition: .4s all;
+}
+.upper_portion .set_2 .on:hover{
+    background-color: #008a00;
+    color: #fff;
+}
+.grid{
+    display: grid;
+    width: 90%;
+    margin: auto;
+    grid-template-areas: 
+    "map map speed"
+    "map map avg-speed"
+    "engine-status fuel-level temperature";
+    grid-gap: 10px;
+}
+
+.grid > .map{
+    grid-area: map;
+    height: 310px;
+    box-shadow: 0 0 10px rgba(0, 255, 255, .2);
+    background-image: url("../images/delhi-map.PNG");
+    background-position: center;
+    background-repeat: no-repeat;
+}
+.grid > .speed{
+    grid-area: speed;
+    border-radius: 10px;
+    box-shadow: 0 3px 12px rgba(0, 0, 0, .6);
+    height: 150px;
+    transition: .4s all;
+}
+.grid > div:hover{
+    box-shadow: 0 0 12px rgba(255, 255, 255, .5);
+    cursor: pointer;
+}
+.grid > div:first-child:hover{
+    box-shadow: 0 0 10px rgba(0, 255, 255, .5);
+    cursor: pointer;
+}
+.grid > .avg-speed{
+    grid-area: avg-speed;
+    border-radius: 10px;
+    box-shadow: 0 3px 12px rgba(0, 0, 0, .6);
+    height: 150px;
+    transition: .4s all;
+}
+.grid > .engine-status{
+    grid-area: engine-status;
+    border-radius: 10px;
+    box-shadow: 0 3px 12px rgba(0, 0, 0, .6);
+    height: 150px;
+    transition: .4s all;
+}
+.grid > .fuel-level{
+    grid-area: fuel-level;
+    border-radius: 10px;
+    box-shadow: 0 3px 12px rgba(0, 0, 0, .6);
+    height: 150px;
+    transition: .4s all;
+}
+.grid > .temperature{
+    grid-area: temperature;
+    border-radius: 10px;
+    box-shadow: 0 3px 12px rgba(0, 0, 0, .6);
+    height: 150px;
+    transition: .4s all;
+}
+
+.grid-title{
+    color: rgba(255, 255, 255, 0.9);
+    font-size: 30px;
+    font-weight: 600;
+    letter-spacing: 1px;
+    margin: 0 0 0 10px;
+    display: flex;
+    align-items: center;
+}
+.grid-title img{
+    height: auto;
+}
+.speed .grid-title img{
+    width: 35px;
+}
+.avg-speed .grid-title img{
+    width: 32px;
+}
+.temperature .grid-title img, .fuel-level .grid-title img{
+    width: 30px;
+}
+.engine-status .grid-title img{
+    width: 33px;
+}
+.grid .data{    color: aqua;
+    font-weight: 700;
+    font-size: 25px;
+    display: inline-block;
+    width: 100%;
+    text-align: center;
+}
+.data > span{
+    font-size: 50px;
+}

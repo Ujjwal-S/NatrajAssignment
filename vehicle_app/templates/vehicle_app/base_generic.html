@@ -1,0 +1,84 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" href="{% static 'images/favicon.ico' %}" type="image/x-icon">
+    <!--CSS-->
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    {% block css %}
+    {% endblock %}
+    <!--Icons-->
+    <link href='https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css' rel='stylesheet'>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.7.0/font/bootstrap-icons.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta2/css/all.min.css" integrity="sha512-YWzhKL2whUzgiheMoBFwW8CKV4qpHQAEuvilg9FAn5VJUDwKZZxkJNuGM4XkWuk94WCrrwslk8yWNGmY1EduTA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <title>{% block title %}{% endblock %}</title>
+</head>
+
+<body>
+    <div class="sidebar open">
+        <div class="logo-details">
+            <i class='bx bx-ghost icon'></i>
+            <div class="logo_name">LogoloGo</div>
+            <i class='bx bx-menu' id="btn"></i>
+        </div>
+        <ul class="nav-list">
+            <li>
+                <a href="/">
+                    <i class='bx bx-home'></i>
+                    <span class="links_name">Home</span>
+                </a>
+                <span class="tooltip">Home</span>
+            </li>
+            <li>
+                <a href="#">
+                    <i class='bx bx-user'></i>
+                    <span class="links_name">User</span>
+                </a>
+                <span class="tooltip">User</span>
+            </li>
+            <li>
+                <a href="#" class="accordion" id="accordion">
+                    <i class='bx bx-car'></i>
+                    <span class="links_name">Vehicles</span>
+                </a>
+                <span class="tooltip">Vehicles</span>
+            </li>
+
+            <ul class="accordion-content">
+                {% if vehicle_list %}
+                    {% for vehicle in vehicle_list %}
+                        <li>
+                            <a href="{{vehicle.get_absolute_url}}">
+                                <i class='bx bx-right-arrow-alt'></i>
+                                <div class="vehicle_list">{{vehicle.name}}</div>
+                            </a>
+                        </li>
+                    {% endfor %}
+                {% else %}
+                    <p class="no-vehicles">There are no vehicles in the databse.</p>
+                {% endif %}
+            </ul>
+
+
+            <li>
+                <a href="/vehicles/create/">
+                    <i class='bx bx-message-square-add'></i>
+                    <span class="links_name">Add new vehicle</span>
+                </a>
+                <span class="tooltip">Add new vehicle</span>
+            </li>
+        </ul>
+    </div>
+    <section class="home-section">
+        {% block content %}
+        {% endblock %}
+    </section>
+
+    <script src="{% static 'js/script.js' %}"></script>
+</body>
+
+</html>

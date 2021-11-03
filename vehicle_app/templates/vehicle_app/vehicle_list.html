@@ -1,0 +1,36 @@
+{% extends "vehicle_app/base_generic.html" %}
+{% load static %}
+
+{% block title %}
+    All Vehicles
+{% endblock %}
+
+{% block css %}
+    <link rel="stylesheet" href="{% static 'css/vehicle_list.css' %}">
+{% endblock %}
+
+{% block content %}
+    {% include 'vehicle_app/navbar.html' %}
+    {% if vehicle_list %}
+        <div class="list-container">
+            {% for vehicle in vehicle_list %}
+                <div class="car">
+                    <div>
+                        <div class="ribbon"></div>
+                        <div class="ribbon-two"></div>
+                    </div>
+
+                    <div class="vehicle">
+                        {{ vehicle.name }}
+                    </div>
+
+                    <a class="button" href="{{vehicle.get_absolute_url}}"">
+                        <button>View</button>
+                    </a>
+                </div>
+            {% endfor %}
+        </div>
+    {% else %}
+        <p>There are no vehicles in the databse.</p>
+    {%endif%}
+{% endblock %}

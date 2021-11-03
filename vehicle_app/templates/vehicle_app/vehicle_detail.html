@@ -1,0 +1,80 @@
+{% extends "vehicle_app/base_generic.html" %}
+{% load static %}
+
+{% block title %}
+    {{ vehicle.name }}
+{% endblock %}
+
+{% block css %}
+    <link rel="stylesheet" href="{% static 'css/vehicle_detail.css' %}">
+{% endblock %}
+
+{% block content %}
+    {% include 'vehicle_app/navbar.html' %}
+    <div class="upper_portion">
+        <div class="set_1">
+            <a href="{{vehicle.get_update_url}}"><button class="circle-button edit"><i class="far fa-edit"></i></button></a>
+            <form id="delBtn" action="{{vehicle.get_delete_url}}" method="POST">{% csrf_token %}<button class="circle-button del" type="submit"><i class="fas fa-trash"></i></button></form>
+            <button class="cam1">Camera 1</button>
+            <button class="cam2">Camera 2</button>
+        </div>
+        <div class="set_2">
+            <button class="off">Off</button>
+            <button class="on">On</button>
+        </div>
+    </div>
+    <div class="grid">
+        <div class="map">
+            
+        </div>
+        <div class="speed">
+            <div class="grid-title">
+                Speed
+                &nbsp;
+                <img src="{% static 'images/ghoda.png' %}" alt="">
+            </div>
+            <span class="data">
+                <span>{{ vehicle.speed }}</span> Kmph
+            </span>
+        </div>
+        <div class="avg-speed">
+            <div class="grid-title">
+                Average Speed
+                <img src="{% static 'images/bijli.png' %}" style="margin-left: 10px;" alt="">
+            </div>
+            <span class="data">
+                <span>{{ vehicle.average_speed }}</span> Kmph
+            </span>
+        </div>
+        <div class="engine-status">
+            <div class="grid-title">
+                Engine Status
+                &nbsp;
+                <img src="{% static 'images/engine-status.png' %}" alt="">
+            </div>
+            <span class="data">
+                <span>{{ vehicle.engine_status }}</span>
+            </span>
+        </div>
+        <div class="fuel-level">
+            <div class="grid-title">
+                Fuel Level
+                &nbsp;
+                <img src="{% static 'images/fuel-level.png' %}" alt="">
+            </div>
+            <span class="data">
+                <span>{{ vehicle.fuel_level }}</span> %
+            </span>
+        </div>
+        <div class="temperature">
+            <div class="grid-title">
+                Temperature
+                &nbsp;
+                <img src="{% static 'images/temperature.png' %}" alt="">
+            </div>
+            <span class="data">
+                <span>{{ vehicle.temperature }}</span> C
+            </span>
+        </div>
+    </div>
+{% endblock %}

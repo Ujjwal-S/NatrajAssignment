@@ -1,0 +1,34 @@
+{% extends "vehicle_app/base_generic.html" %}
+{% load static %}
+
+{% block title %}
+    Add Vehicle
+{% endblock %}
+
+{% block css %}
+    <link rel="stylesheet" href="{% static 'css/vehicle_form.css' %}">
+{% endblock %}
+
+{% block content %}
+    {% include 'vehicle_app/navbar.html' %}
+    <h1>
+        <span>
+            &nbsp;Add new Vehicle&nbsp;
+        </span>
+    </h1>
+    <div class="form-container">
+        <form action="/vehicles/create/" method="POST">
+            {% csrf_token %}
+            {% for field in form.visible_fields %}
+                <div class="form-box">
+                    <label>{{ field.label }}</label>
+                    {{field}}
+                </div>
+            {% endfor %}
+            <div class="button">
+                <button type="submit">Submit</button>
+            </div>
+        </form>
+    </div>
+
+{% endblock %}
